@@ -1,4 +1,4 @@
-import {EventEmitter, Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
 
 import {Recipe} from '../../shared/recipe.model';
 import {Ingredient} from '../../shared/ingredient.model';
@@ -6,7 +6,6 @@ import {ShoppingListService} from '../../shopping-list/shopping-list-service/sho
 
 @Injectable()
 export class RecipeService {
-  recipeSelected = new EventEmitter<Recipe>();
   private recipes: Recipe[] = [
     new Recipe('Schnitzel', 'Just a Nider - Schnitzel', 'https://img.taste.com.au/UCkD8VfP/w1200-h630-cfill/taste/2016/11/' +
       'chicken-and-prosciutto-parmigiana-79468-1.jpeg', [
@@ -25,6 +24,10 @@ export class RecipeService {
 
   getRecipes() {
     return this.recipes.slice();
+  }
+
+  getRecipe(index: number) {
+    return this.recipes[index];
   }
 
   addIngredientsToSl(ingredients: Ingredient[]) {
